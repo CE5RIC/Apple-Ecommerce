@@ -11,6 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import { Tooltip } from "@mui/material";
 import React, { useState } from "react";
 import AppleIcon from "@mui/icons-material/Apple";
+import Link from "next/link";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -59,9 +60,16 @@ export default function Header() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar sx={{ backgroundColor: "#555555" }} position="static">
         <Toolbar>
-          <IconButton size="large" edge="start" color="inherit" sx={{ mr: 2 }}>
-            <AppleIcon />
-          </IconButton>
+          <Link href="/">
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              sx={{ mr: 2 }}
+            >
+              <AppleIcon />
+            </IconButton>
+          </Link>
           <Typography
             variant="h6"
             noWrap
