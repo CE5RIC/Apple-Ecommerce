@@ -4,11 +4,13 @@ import Image from "next/image";
 
 const Home: NextPage = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Apple E-commerce</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <h1>Lets build this!</h1>
     </div>
   );
 };
