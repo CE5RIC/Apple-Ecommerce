@@ -13,6 +13,7 @@ import React, { useState } from "react";
 import AppleIcon from "@mui/icons-material/Apple";
 import Link from "next/link";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -56,6 +57,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const session = false;
+
 export default function Header() {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -90,16 +93,23 @@ export default function Header() {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
-          <Tooltip title="Open settings">
-            <IconButton sx={{ p: 2 }}>
-              <Avatar alt="" src="" />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Go to checkout">
-            <IconButton sx={{ p: 2, color: "white" }}>
-              <ShoppingBasketIcon />
-            </IconButton>
-          </Tooltip>
+          {session ? (
+            <Tooltip title="Open settings">
+              <IconButton sx={{ p: 2 }}>
+                <Avatar alt="" src="" />
+              </IconButton>
+            </Tooltip>
+          ) : (
+            <AccountCircleIcon />
+          )}
+
+          <Link href={"/checkout"}>
+            <Tooltip title="Go to checkout">
+              <IconButton sx={{ p: 2, color: "white" }}>
+                <ShoppingBasketIcon />
+              </IconButton>
+            </Tooltip>
+          </Link>
         </Toolbar>
       </AppBar>
     </Box>
