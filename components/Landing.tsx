@@ -1,5 +1,6 @@
-import { Box, Button, Link, Paper } from "@mui/material";
+import { Box, Link, Paper } from "@mui/material";
 import React from "react";
+import Button from "./Button";
 
 function Landing() {
   return (
@@ -10,9 +11,7 @@ function Landing() {
       </Box>
 
       <Box>
-        <Button variant="contained" title="Buy Now">
-          Buy Now
-        </Button>
+        <Button title="Buy Now" />
         <Link>Learn More</Link>
       </Box>
 
