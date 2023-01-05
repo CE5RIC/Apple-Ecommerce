@@ -12,6 +12,7 @@ import { Tooltip } from "@mui/material";
 import React, { useState } from "react";
 import AppleIcon from "@mui/icons-material/Apple";
 import Link from "next/link";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -64,8 +65,7 @@ export default function Header() {
             <IconButton
               size="large"
               edge="start"
-              color="inherit"
-              sx={{ mr: 2 }}
+              sx={{ mr: 2, color: "white" }}
             >
               <AppleIcon />
             </IconButton>
@@ -93,6 +93,11 @@ export default function Header() {
           <Tooltip title="Open settings">
             <IconButton sx={{ p: 2 }}>
               <Avatar alt="" src="" />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Go to checkout">
+            <IconButton sx={{ p: 2, color: "white" }}>
+              <ShoppingBasketIcon />
             </IconButton>
           </Tooltip>
         </Toolbar>
