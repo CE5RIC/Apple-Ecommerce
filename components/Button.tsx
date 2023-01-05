@@ -3,12 +3,13 @@ import React from "react";
 
 interface Props {
   title: string;
+  onClick?: () => void;
 }
 
-function Button({ title }: Props) {
+function Button({ title, onClick }: Props) {
   return (
     <>
-      <Box></Box>
+      <button onClick={onClick}>Buy Now</button>
     </>
   );
 }
