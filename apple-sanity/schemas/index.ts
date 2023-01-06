@@ -17,6 +17,7 @@ import colorTheme from './documents/colorTheme'
 import page from './documents/page'
 import product from './documents/product'
 import productVariant from './documents/productVariant'
+import category from './category'
 
 const documents = [collection, colorTheme, page, product, productVariant]
 
@@ -96,4 +97,4 @@ const objects = [
   shopifyProductVariant,
 ]
 
-export const schemaTypes = [...annotations, ...documents, ...singletons, ...objects, ...blocks]
+export const schemaTypes = [...annotations, ...documents, ...singletons, ...objects, ...blocks, category]
