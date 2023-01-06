@@ -9,6 +9,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import React from "react";
 import { useState } from "react";
+import { fetchCategories } from "../utils/fetchCategories";
 
 const Home: NextPage = () => {
   const [value, setValue] = React.useState("one");
@@ -56,7 +57,7 @@ export default Home;
 // Backend Code
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  // const categories = await fetchCategories();
+  const categories = await fetchCategories();
   return {
     props: {},
   };
