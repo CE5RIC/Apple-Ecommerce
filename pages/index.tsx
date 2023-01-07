@@ -10,13 +10,16 @@ import Tab from "@mui/material/Tab";
 import React from "react";
 import { useState } from "react";
 import { fetchCategories } from "../utils/fetchCategories";
+import category from "../apple-sanity/schemas/category";
 
 interface Props {
   categories: Category[];
 }
 
-const Home: NextPage = () => {
+const Home = ({ categories }: Props) => {
   const [value, setValue] = React.useState("one");
+
+  console.log(categories);
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -46,10 +49,14 @@ const Home: NextPage = () => {
           indicatorColor="secondary"
           aria-label="secondary tabs example"
         >
-          <Tab value="one" label="Item One" />
-          <Tab value="two" label="Item Two" />
-          <Tab value="three" label="Item Three" />
-          <Tab value="four" label="Item Four" />
+          {categories.map((category) => (
+            <Tab
+              key={category._id}
+              id={category._id}
+              value={category.title}
+              label={category.title}
+            />
+          ))}
         </Tabs>
       </Box>
     </>
