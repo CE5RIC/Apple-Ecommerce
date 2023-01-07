@@ -11,18 +11,28 @@ import React from "react";
 import { useState } from "react";
 import { fetchCategories } from "../utils/fetchCategories";
 import category from "../apple-sanity/schemas/category";
+import { fetchDevices } from "../utils/fetchDevices";
 
 interface Props {
   categories: Category[];
+  devices: Device[];
 }
 
-const Home = ({ categories }: Props) => {
+const Home = ({ categories, devices }: Props) => {
   const [value, setValue] = React.useState("one");
 
-  console.log(categories);
+  console.log(categories, devices);
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
+  };
+
+  const showDevices = (category: number) => {
+    return devices
+      .filter(
+        (device) => device.category._ref === categories[category]._id // Filter devices by category
+      )
+      .map((device) => <Device />);
   };
 
   return (
@@ -69,9 +79,11 @@ export default Home;
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const categories = await fetchCategories();
+  const devices = await fetchDevices();
   return {
     props: {
       categories,
+      devices,
     },
   };
 };
