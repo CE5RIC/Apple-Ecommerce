@@ -11,6 +11,10 @@ import React from "react";
 import { useState } from "react";
 import { fetchCategories } from "../utils/fetchCategories";
 
+interface Props {
+  categories: Category[];
+}
+
 const Home: NextPage = () => {
   const [value, setValue] = React.useState("one");
 
@@ -56,7 +60,7 @@ export default Home;
 
 // Backend Code
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const categories = await fetchCategories();
   return {
     props: {
