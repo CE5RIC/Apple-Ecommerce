@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import { urlFor } from "../sanity";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 interface Props {
   device: Device;
@@ -29,7 +30,9 @@ function Device({ device }: Props) {
         <p>{device.price}</p>
       </Box>
 
-      <Box></Box>
+      <Box>
+        <ShoppingCartIcon />
+      </Box>
     </>
   );
 }
