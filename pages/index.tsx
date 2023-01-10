@@ -7,11 +7,17 @@ import Landing from "../components/Landing";
 // Tabs on the homePage
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+
+import TabContext from "@mui/lab/TabContext";
+
 import React from "react";
 import { useState } from "react";
 import { fetchCategories } from "../utils/fetchCategories";
 import category from "../apple-sanity/schemas/category";
 import { fetchDevices } from "../utils/fetchDevices";
+import Device from "../components/Device";
+import device from "../apple-sanity/schemas/device";
+import { TabList, TabPanel } from "@mui/lab";
 
 interface Props {
   categories: Category[];
@@ -19,7 +25,7 @@ interface Props {
 }
 
 const Home = ({ categories, devices }: Props) => {
-  const [value, setValue] = React.useState("one");
+  const [value, setValue] = useState("1");
 
   console.log(categories, devices);
 
@@ -29,10 +35,8 @@ const Home = ({ categories, devices }: Props) => {
 
   const showDevices = (category: number) => {
     return devices
-      .filter(
-        (device) => device.category._ref === categories[category]._id // Filter devices by category
-      )
-      .map((device) => <Device />);
+      .filter((device) => device.category._ref === categories[category]._id)
+      .map((device) => <Device device={device} key={device._id} />); // filter products by category
   };
 
   return (
@@ -52,22 +56,20 @@ const Home = ({ categories, devices }: Props) => {
 
       <Box>
         <h1>Promos</h1>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          textColor="secondary"
-          indicatorColor="secondary"
-          aria-label="secondary tabs example"
-        >
-          {categories.map((category) => (
-            <Tab
-              key={category._id}
-              id={category._id}
-              value={category.title}
-              label={category.title}
-            />
-          ))}
-        </Tabs>
+        <TabContext value={value}>
+          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            <TabList aria-label="Tabs example" onChange={handleChange}>
+              <Tab label="Tab One" value="1"></Tab>
+              <Tab label="Tab Two" value="2"></Tab>
+              <Tab label="Tab Three" value="3"></Tab>
+              <Tab label="Tab Four" value="4"></Tab>
+            </TabList>
+          </Box>
+          <TabPanel value="1">{showDevices(0)}</TabPanel>
+          <TabPanel value="2">{showDevices(1)}</TabPanel>
+          <TabPanel value="3">{showDevices(2)}</TabPanel>
+          <TabPanel value="4">{showDevices(3)}</TabPanel>
+        </TabContext>
       </Box>
     </>
   );
