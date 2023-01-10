@@ -18,6 +18,9 @@ import page from './documents/page'
 import product from './documents/product'
 import productVariant from './documents/productVariant'
 import category from './category'
+import device from './device'
+import blockContent from './blockContent'
+
 
 const documents = [collection, colorTheme, page, product, productVariant]
 
@@ -97,4 +100,4 @@ const objects = [
   shopifyProductVariant,
 ]
 
-export const schemaTypes = [...annotations, ...documents, ...singletons, ...objects, ...blocks, category]
+export const schemaTypes = [...annotations, ...documents, ...singletons, ...objects, ...blocks, category, device, blockContent]
