@@ -3,13 +3,19 @@ import Image from "next/image";
 import React from "react";
 import { urlFor } from "../sanity";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../redux/basketSlice";
 
 interface Props {
   device: Device;
 }
 
 function Device({ device }: Props) {
-  const addItemToBasket = () => {};
+  const dispatch = useDispatch();
+
+  const addItemToBasket = () => {
+    dispatch(addToBasket(device));
+  };
 
   return (
     <>
