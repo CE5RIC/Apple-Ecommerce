@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import { urlFor } from "../sanity";
@@ -9,6 +9,8 @@ interface Props {
 }
 
 function Device({ device }: Props) {
+  const addItemToBasket = () => {};
+
   return (
     <>
       <Box
@@ -30,9 +32,9 @@ function Device({ device }: Props) {
         <p>{device.price}</p>
       </Box>
 
-      <Box>
+      <Button onClick={addItemToBasket}>
         <ShoppingCartIcon />
-      </Box>
+      </Button>
     </>
   );
 }
