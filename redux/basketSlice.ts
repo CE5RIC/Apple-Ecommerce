@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { join } from 'path';
+import { RootState } from './store';
 
 export interface BasketState {
     items: Device[]
@@ -43,5 +45,17 @@ export const basketSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { addToBasket, removeFromBasket} = basketSlice.actions
+
+
+// Selectors to retrieve items in state to use in different components
+
+export const selectBasketItems = (state: RootState) => state.basket.items;
+export const selectBasketItemsWithId = (state: RootState, id: string) => {
+  state.basket.items.filter((item: Device) => item._id === id);
+};
+
+export const selectBasketTotal = (state: RootState) => {
+    state.basket.items.reduce((total: number, item: Device) => (total += item.price), 0)
+}
 
 export default basketSlice.reducer
