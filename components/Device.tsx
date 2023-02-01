@@ -2,27 +2,20 @@ import { Box, Button } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import { urlFor } from "../sanity";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useDispatch } from "react-redux";
-import { addToBasket } from "../redux/basketSlice";
 
 interface Props {
   device: Device;
 }
 
 function Device({ device }: Props) {
-  const dispatch = useDispatch();
-
-  const addItemToBasket = () => {
-    dispatch(addToBasket(device));
-  };
+  const quantity = 0;
 
   return (
     <>
       <Box
         sx={{
           position: "relative",
-          height: 64,
+          height: 600,
           width: "full",
           display: "flex",
 
@@ -38,9 +31,20 @@ function Device({ device }: Props) {
         <p>{device.price}</p>
       </Box>
 
-      <Button onClick={addItemToBasket}>
-        <ShoppingCartIcon />
-      </Button>
+      <Box>
+        {" "}
+        {quantity === 0 ? (
+          <Button>Add to cart</Button>
+        ) : (
+          <Box>
+            <Button>-</Button>
+            <Box>
+              <span>{quantity} in cart</span>
+            </Box>
+            <Button>+</Button> <Button>Remove</Button>{" "}
+          </Box>
+        )}
+      </Box>
     </>
   );
 }

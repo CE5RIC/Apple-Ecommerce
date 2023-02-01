@@ -14,8 +14,6 @@ import AppleIcon from "@mui/icons-material/Apple";
 import Link from "next/link";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { useSelector } from "react-redux";
-import { selectBasketItems } from "../redux/basketSlice";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -61,7 +59,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Header() {
   const session = false;
-  const items = useSelector(selectBasketItems);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -109,7 +106,7 @@ export default function Header() {
           <Link href={"/checkout"}>
             <Tooltip title="Go to checkout">
               <IconButton sx={{ p: 2, color: "white" }}>
-                <span>{items.length}</span>
+                <span></span>
                 <ShoppingBasketIcon />
               </IconButton>
             </Tooltip>
